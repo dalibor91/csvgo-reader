@@ -1,7 +1,5 @@
 package csv_reader
 
-import "fmt"
-
 type CSVData struct {
 	fullData [][]string
 	size int
@@ -25,8 +23,6 @@ func (t * CSVData) SetHeaderLine(line int) * CSVData {
 }
 
 func (t * CSVData) SetHeader(row []string) * CSVData {
-	fmt.Println("hdr")
-	fmt.Println(row)
 	t.header = row
 	return t
 }
@@ -48,17 +44,18 @@ func (t * CSVData) Append(row []string) * CSVData {
 	return t
 }
 
-func (t * CSVData) Size() int { return t.size }
+func (t * CSVData) Size() int {
+	return t.size
+}
 
-func (t * CSVData) Data() [][]string { return t.fullData }
+func (t * CSVData) Data() [][]string {
+	return t.fullData
+}
 
-func (t * CSVData) Comments() []string { return t.comments }
+func (t * CSVData) Comments() []string {
+	return t.comments
+}
 
-func (t * CSVData) Dump() {
-	fmt.Println("Header")
-	fmt.Println(t.header)
-
-	for i := range(t.fullData) {
-		fmt.Println(t.fullData[i])
-	}
+func (t * CSVData) Header() []string {
+	return t.header
 }
