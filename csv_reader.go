@@ -94,7 +94,7 @@ func (c * CsvReader) Read() * CSVData {
 
 				cline = append(cline, string(ccol))
 
-				data.Append(cline)
+				data.append(cline)
 
 				cline = make([]string, 0)
 				ccol = make([]rune, 0)
