@@ -4,6 +4,10 @@ CSV Parser for folang
 
 Csv reader that enables you to specify terminating char, delimiter, comments , enclosure, escape string 
 
+Please check test for example how to use it 
+
+https://github.com/dalibor91/csvgo-reader/blob/master/test/main.go
+
 ```
 package main
 
