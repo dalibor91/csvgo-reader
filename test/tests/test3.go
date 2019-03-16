@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	c "../../../csvgo-reader"
+	c "../../csv-reader"
 )
 
 func main() {
@@ -29,7 +29,8 @@ func main() {
 	fmt.Println("Extract index 1,2,4,6,18")
 
 	data1 := data.ExtractIndex(1,2,4,6,18)
-	fmt.Println(fmt.Sprintf("Found %d rows", data1.Size()))
+	fmt.Println("Get column 'sale_date' from first row on index 0")
+	fmt.Println(data1.GetValueByName(0, "sale_date", true))
 
 	fmt.Println("Show first row on index 0")
 	fmt.Println(data1.GetRow(0))

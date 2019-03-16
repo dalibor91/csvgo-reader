@@ -1,10 +1,10 @@
 package main
 
 import (
-	c "../../../csvgo-reader"
 	"fmt"
 	"log"
 	"os"
+	c "../../csv-reader"
 )
 
 func main() {

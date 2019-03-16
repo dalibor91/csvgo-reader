@@ -6,7 +6,11 @@ test_bin="${location}/bin/test_bin"
 test_go="${location}/tests"
 
 function dbg {
-	local _run="go build -o ${test_bin} $1"
+	local _test_bin="${test_bin}_`date +"%s"`"
+	
+	local _run="go build -o ${_test_bin} $1"
+
+
 	echo "$_run"
 	export test_data="$test_data" 
 	eval "$_run"
@@ -16,8 +20,8 @@ function dbg {
 		exit 1
 	fi
 
-	local output="${test_bin}.`date +"%s"`.log"
-	eval $test_bin >> $output
+	local output="${_test_bin}.`date +"%s"`.log"
+	eval $_test_bin >> $output
 
 	if [ "$DEBUG" = "1" ];
 	then 
@@ -29,6 +33,8 @@ function dbg {
 		echo "Unable to execute "
 		exit 2
 	fi
+
+	rm $_test_bin
 }
 
 cd $location
@@ -37,6 +43,8 @@ for file in $(find $test_go -name '*.go');
 do
 	echo "================ `date +"%s"` ================="
 	dbg $file
+	echo -e "\n\n"
+	sleep 1
 done
 
 echo "Tests DONE!"

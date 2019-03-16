@@ -2,7 +2,7 @@ package main
 
 import (
 	//c "github.com/dalibor91/csvgo-reader"
-	c "../../../csvgo-reader"
+	c "../../csv-reader"
 	"fmt"
 	"log"
 	"os"

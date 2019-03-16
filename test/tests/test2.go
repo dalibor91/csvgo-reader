@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	c "../../../csvgo-reader"
+	c "../../csv-reader"
 )
 
 func main() {
