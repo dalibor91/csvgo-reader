@@ -1,8 +1,8 @@
 package main
 
 import (
+	//c "github.com/dalibor91/csvgo-reader"
 	c "github.com/dalibor91/csvgo-reader/csv-reader"
-	//c "../../csv-reader"
 	"fmt"
 	"log"
 	"os"

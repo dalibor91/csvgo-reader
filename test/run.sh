@@ -43,9 +43,15 @@ files=$(find $test_go -name '*.go')
 
 if [ "$docker" = "1" ];
 then 
-	echo "Run inside docker"
+	echo "Run inside docker with remote library..."
 	go get "github.com/dalibor91/csvgo-reader"
-	files="$files $(find ${location}/docker -name '*.go')"
+	cp -rp "${location}/tests" "${location}/docker"
+	files="$(find "${location}/docker" -name '*.go')"
+
+	for file in $files; 
+	do 
+		sed -i 's/"..\/..\/csv-reader"/"github.com\/dalibor91\/csvgo-reader\/csv-reader"/' $file
+	done 
 fi
 
 for file in $files;
