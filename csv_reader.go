@@ -60,25 +60,31 @@ func (c * CsvReader) Read() * CSVData {
 	for {
 		_rune, _size, _err := reader.ReadRune()
 		if _err != nil && _size == 0 {
+			// TODO : handle error
 			break;
 		}
 
 		if _rune == c.comment && newLine {
 			//handle comment
-			var comment []rune = make([]rune, 1)
+			var comment []rune = make([]rune, 0)
 			comment = append(comment, _rune)
 			for {
 				_rune1, _size1, _err1 := reader.ReadRune()
-				if _err1 != nil && _size1 == 0 && _rune1 != c.endOfLine {
+				if _err1 != nil || _size1 == 0 {
+					// TODO: handle error
 					break;
 				}
 
 				comment = append(comment, _rune1)
+
+				if _rune1 == c.endOfLine {
+					newLine = true
+					lrune = c.endOfLine
+					break
+				}
 			}
 
 			comm = append(comm, string(comment))
-			newLine = true
-			lrune = c.endOfLine
 			continue
 
 		} else {

@@ -12,7 +12,7 @@ type CSVRow struct {
 func newCSVRow(row []string) (* CSVRow) {
 	k := make([]CSVColumn, 0)
 	for i := range(row) {
-		k = append(k, CSVColumn{value: row[i]})
+		k = append(k, CSVColumn{value: row[i], index: i})
 	}
 	return NewCSVRow(k)
 }
@@ -52,6 +52,14 @@ func (t * CSVRow) Append(c CSVColumn) (* CSVRow) {
 
 func (t * CSVRow) EqualSize(u * CSVRow) bool {
 	return t.Size() == u.Size()
+}
+
+func (t * CSVRow) Apply(callback func(column CSVColumn) CSVColumn) * CSVRow {
+	for i := range(t.row) {
+		t.row[i] = callback(t.row[i])
+	}
+
+	return t;
 }
 
 func (t * CSVRow) AsString() []string {

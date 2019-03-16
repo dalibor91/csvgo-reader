@@ -43,3 +43,21 @@ func main() {
 
 }
 ```
+
+## Testing 
+
+to run simple tests execute 
+```
+test/run.sh
+```
+
+to get output of the executed test files run 
+
+```
+DEBUG=1 test/run.sh
+```
+
+to run in docker 
+```
+test/run_docker.sh
+```

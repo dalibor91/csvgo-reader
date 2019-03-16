@@ -113,6 +113,14 @@ func (t * CSVData) RemoveInvalidRows() uint {
 	return removed
 }
 
+func (t * CSVData) Apply(callback func(row * CSVRow) * CSVRow) * CSVData {
+	for i := range(t.fullData) {
+		t.fullData[i] = callback(t.fullData[i])
+	}
+
+	return t
+}
+
 func (t * CSVData) ExtractIndex(idx ... uint) * CSVData {
 	data := NewCsvData()
 
