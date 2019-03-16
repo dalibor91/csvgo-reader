@@ -39,7 +39,16 @@ function dbg {
 
 cd $location
 
-for file in $(find $test_go -name '*.go');
+files=$(find $test_go -name '*.go')
+
+if [ "$docker" = "1" ];
+then 
+	echo "Run inside docker"
+	go get "github.com/dalibor91/csvgo-reader"
+	files="$files $(find ${location}/docker -name '*.go')"
+fi
+
+for file in $files;
 do
 	echo "================ `date +"%s"` ================="
 	dbg $file
