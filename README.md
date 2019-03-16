@@ -12,7 +12,7 @@ https://github.com/dalibor91/csvgo-reader/blob/master/test/main.go
 package main
 
 import (
-        c "github.com/dalibor91/csvgo-reader"
+        c "github.com/dalibor91/csvgo-reader/csv-reader"
         "os"
         "log"
         "fmt"
