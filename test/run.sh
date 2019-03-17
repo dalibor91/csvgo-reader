@@ -35,6 +35,7 @@ function dbg {
 	fi
 
 	rm $_test_bin
+	rm $output
 }
 
 cd $location
